@@ -1,0 +1,35 @@
+{
+    "name":    "api",
+    "version": 2,
+    "scope":   "secretary",
+    "alias":   ["api.secretary.dev"],
+    "regions": ["all"],
+    "builds":  [
+        {
+            "src": "src/main.ts",
+            "use": "@now/node-server@canary"
+        }
+    ],
+    "env":     {
+        "sm_access_key_id":     "@website_sm_access_key_id",
+        "sm_secret_access_key": "@website_sm_secret_access_key",
+        "userPoolId":           "@website_user_pool_id",
+        "userPoolWebClientId":  "@website_user_pool_web_client_id"
+    },
+    "routes":  [
+        {
+            "src":     "/",
+            "dest":    "/src/main.ts",
+            "headers": {
+                "x-request-path": "/"
+            }
+        },
+        {
+            "src":     "/(.*)",
+            "dest":    "/src/main.ts",
+            "headers": {
+                "x-request-path": "$1"
+            }
+        }
+    ]
+}
