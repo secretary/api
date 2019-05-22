@@ -1,15 +1,15 @@
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
-import {TypeOrmModule} from '@nestjs/typeorm';
+// import {TypeOrmModule} from '@nestjs/typeorm';
 import {unlinkSync} from 'fs';
 import {join} from 'path';
 
 import IndexController from '../Controller/IndexController';
-import TypeOrmConfigService from '../Database/TypeOrmConfigService';
-import Organization from '../Entity/Organization';
-import OrganizationUser from '../Entity/OrganizationUser';
+// import TypeOrmConfigService from '../Database/TypeOrmConfigService';
+// import Organization from '../Entity/Organization';
+// import OrganizationUser from '../Entity/OrganizationUser';
 import {OrganizationResolver} from '../Resolver/OrganizationResolver';
-import Manager from '../Secret/Manager';
+// import Manager from '../Secret/Manager';
 
 /*
  const stripeFactory = {
@@ -31,18 +31,18 @@ try {
 }
 
 @Module({
-    providers:   [Manager, OrganizationResolver],
+    providers:   [/*Manager, */OrganizationResolver],
     imports:     [
-        TypeOrmModule.forRootAsync({useClass: TypeOrmConfigService}),
-        TypeOrmModule.forFeature([Organization, OrganizationUser]),
+        //TypeOrmModule.forRootAsync({useClass: TypeOrmConfigService}),
+        //TypeOrmModule.forFeature([Organization, OrganizationUser]),
         GraphQLModule.forRootAsync({
             useFactory: async () => {
-                const manager = new Manager();
-                const engine: any = (await manager.getSecret('secretary/apollo/engine')).value;
+                //const manager = new Manager();
+                //const engine: any = (await manager.getSecret('secretary/apollo/engine')).value;
 
                 return {
                     autoSchemaFile: schema,
-                    engine,
+                    //engine,
                 };
             },
         }),
